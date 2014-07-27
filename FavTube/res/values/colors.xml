@@ -1,5 +1,5 @@
 <resources>
-    <color name="fragment_a_bg">#FFCC00</color>
+    <color name="fragment_search">#FFFFFF</color>
     <color name="fragment_b_bg">#CCFF00</color>
     <color name="fragment_c_bg">#00CCFF</color>
     <color name="fragment_d_bg">#FFCCFF</color>

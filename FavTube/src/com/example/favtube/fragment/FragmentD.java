@@ -1,4 +1,7 @@
-package com.example.favtube;
+package com.example.favtube.fragment;
+
+import com.example.favtube.R;
+import com.example.favtube.R.layout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

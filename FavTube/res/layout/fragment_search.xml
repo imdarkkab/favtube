@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_search"
+    tools:context="com.example.favtube.fragment.SearchFragment" >
+
+    <LinearLayout
+        android:id="@+id/searchBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/searchTextBox"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="text" >
+
+        </EditText>
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="0dp"
+            android:text="@string/videos_fragment_btn_search" />
+
+    </LinearLayout>
+
+    <com.example.favtube.view.VideosListView
+        android:id="@+id/videosListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/searchBar" />
+
+</RelativeLayout>
