@@ -1,13 +1,17 @@
 package com.example.favtube.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.favtube.R;
 import com.example.favtube.model.Mp3;
+import com.example.favtube.task.Mp3DownloadTask;
 import com.example.favtube.util.DeveloperKey;
 import com.example.favtube.util.Log;
 import com.example.favtube.util.VideoUtilities;
@@ -24,7 +28,11 @@ import com.google.android.youtube.player.YouTubePlayerView;
  * {@link YouTubeBaseActivity}.
  */
 public class PlayerActivity extends YouTubeFailureRecoveryActivity {
-	String videoId = "" ;
+
+
+	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,8 +42,10 @@ public class PlayerActivity extends YouTubeFailureRecoveryActivity {
 		youTubeView.initialize(DeveloperKey.DEVELOPER_KEY, this);
 		
 		Bundle b = getIntent().getExtras();
-		videoId = b.getString("video_id");
+		String videoId = b.getString("video_id");
 		Log.d("videoId="+videoId);
+		
+		
 		String title = b.getString("title");
 		String description = b.getString("description");
 		
@@ -45,19 +55,23 @@ public class PlayerActivity extends YouTubeFailureRecoveryActivity {
 		descTextView.setText(description);
 		
 		Button convertButton = (Button) findViewById(R.id.ButtonConvert) ; 
-		convertButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Mp3 mp3 = VideoUtilities.getConvertFile(videoId);
-				if(mp3.getStatus() != 1){
-					Toast toast = Toast.makeText(getApplicationContext(), "Can not download this video, please check your source video not over 20 minutes.", 50000);
-					toast.show();
-				}
-			}
-			
-		});
+//		convertButton.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				
+////				if(mp3.getStatus() != 1){
+////					Toast toast = Toast.makeText(getApplicationContext(), "Can not download this video, please check your source video not over 20 minutes.", 50000);
+////					toast.show();
+////				}
+//				
+////				
+//			}
+//			
+//		});
+		
+		convertButton.setOnClickListener(new OnCLickConvert(videoId));
 		
 	}
 
@@ -77,6 +91,21 @@ public class PlayerActivity extends YouTubeFailureRecoveryActivity {
 	@Override
 	protected YouTubePlayer.Provider getYouTubePlayerProvider() {
 		return (YouTubePlayerView) findViewById(R.id.youtube_view);
+	}
+	
+	class OnCLickConvert implements OnClickListener {
+		String videoId ;
+		public OnCLickConvert(String videoId){
+			this.videoId = videoId ;
+		}
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+//			Mp3 mp3 = VideoUtilities.getConvertFile(videoId);
+			Mp3DownloadTask mp3DownloadTask = new Mp3DownloadTask( videoId) ;
+			new Thread(mp3DownloadTask).start() ;
+		}
+		
 	}
 
 }

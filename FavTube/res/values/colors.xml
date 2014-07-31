@@ -3,4 +3,6 @@
     <color name="fragment_b_bg">#CCFF00</color>
     <color name="fragment_c_bg">#00CCFF</color>
     <color name="fragment_d_bg">#FFCCFF</color>
+    
+    <color name="custom_theme_color">#b0b0ff</color>
 </resources>

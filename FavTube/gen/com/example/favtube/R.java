@@ -11,6 +11,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int custom_theme_color=0x7f040004;
         public static final int fragment_b_bg=0x7f040001;
         public static final int fragment_c_bg=0x7f040002;
         public static final int fragment_d_bg=0x7f040003;
@@ -78,5 +79,7 @@ public final class R {
     }
     public static final class style {
         public static final int AppBaseTheme=0x7f070000;
+        public static final int CustomTheme=0x7f070002;
+        public static final int VideoTheme=0x7f070001;
     }
 }

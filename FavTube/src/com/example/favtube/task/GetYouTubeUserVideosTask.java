@@ -95,6 +95,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String id = jsonObject.getString("id");
+                Log.d("id="+id);
                 // The title of the video
                 String title = jsonObject.getString("title");
                 // The url link back to YouTube, this checks if it has a mobile url

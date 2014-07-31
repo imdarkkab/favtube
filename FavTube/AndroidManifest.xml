@@ -19,7 +19,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppBaseTheme" >
         
-        <activity android:name="com.example.favtube.activity.PlayerActivity" >
+        <activity android:name="com.example.favtube.activity.PlayerActivity"
+            android:theme="@style/CustomTheme"  >
         </activity>
         
         <activity
